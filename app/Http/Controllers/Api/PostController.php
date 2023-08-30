@@ -9,7 +9,8 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        $posts= Post::all();
+        // $posts= Post::all();
+        $posts = Post::with('type', 'tecnologies')->paginate(3);
         return response()->json([
             'success' => true,
             'results' => $posts,
